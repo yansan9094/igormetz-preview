@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Projekt anfragen – Igor Metz Tattoo, München</title>
+<meta name="description" content="Tattoo anfragen bei Igor Metz in München: Körperstelle auf der Figur wählen, Größe und Stil angeben, Referenzfotos hochladen.">
+<meta name="robots" content="noindex"><!-- Nur für die Vorschau -->
+<link rel="icon" type="image/png" href="assets/images/favicon.png">
+<link rel="stylesheet" href="assets/css/main.css">
+<link rel="stylesheet" href="assets/anfrage.css">
+</head>
+<body class="preview">
+<a class="hidden-a11y" href="#inhalt">Zum Inhalt springen</a>
+
+<header class="site-header">
+	<div class="wrap site-header__inner">
+		<a class="brand" href="index.html">
+			<img class="brand__mark" src="assets/images/logo.png" alt="Logo Igor Metz Tattoo">
+			<span>
+				<span class="brand__name">Igor&nbsp;Metz</span>
+				<span class="brand__sub">Tattoo · München</span>
+			</span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="sitenav"
+		        onclick="var n=document.getElementById('sitenav');var o=n.classList.toggle('open');this.setAttribute('aria-expanded',o)">
+			<span aria-hidden="true">☰</span><span class="hidden-a11y">Menü öffnen</span>
+		</button>
+		<nav class="site-nav" id="sitenav">
+			<ul style="display:contents">
+				<li class=""><a href="index.html">Start</a></li>
+				<li class=""><a href="portfolio.html">Portfolio</a></li>
+				<li><a href="index.html#ueber-mich">Über mich</a></li>
+				<li class="current-menu-item"><a href="anfrage.html">Anfrage</a></li>
+			</ul>
+		</nav>
+		<a class="btn btn--sm" href="anfrage.html">Projekt anfragen</a>
+	</div>
+</header>
+<main id="inhalt">
+
+<section class="section">
+	<div class="wrap" style="max-width:900px">
+		<p class="kicker">Anfrage &amp; Kontakt</p>
+		<h1>Erzähl mir von deinem Projekt</h1>
+		<p class="lead">Je genauer deine Angaben, desto schneller meine Antwort. Klick auf der Figur, wo das Tattoo hin soll – Rück- und Vorderansicht.</p>
+
+		<div class="alert alert--ok js-demo-success" hidden role="status" style="margin-top:30px">
+			<strong>✓ Demo: So sieht die Bestätigung nach dem Absenden aus.</strong><br>
+			Auf der echten Seite wird die Anfrage per E-Mail an Igor gesendet und im WordPress-Backend gespeichert – mit deinen Foto-Anhängen.
+		</div>
+
+		<form class="tatoo-anfrage" style="margin-top:30px" data-demo novalidate>
+			<div class="form-grid">
+				<div class="field">
+					<label for="d-name">Name <span class="req">*</span></label>
+					<input type="text" id="d-name" name="ia_name" required autocomplete="name">
+				</div>
+				<div class="field">
+					<label for="d-mail">E-Mail <span class="req">*</span></label>
+					<input type="email" id="d-mail" name="ia_email" required autocomplete="email">
+				</div>
+				<div class="field">
+					<label for="d-tel">Telefon / WhatsApp (optional)</label>
+					<input type="tel" id="d-tel" name="ia_phone">
+				</div>
+				<div class="field">
+					<label for="d-termin">Wunschtermin (optional)</label>
+					<input type="date" id="d-termin" name="ia_termin">
+				</div>
+				<div class="field">
+					<label for="d-grosse">Größe des Tattoos <span class="req">*</span></label>
+					<select id="d-grosse" name="ia_groesse" required>
+						<option value="">Bitte wählen …</option>
+						<option>bis 10 cm</option>
+						<option>10–25 cm</option>
+						<option>25–40 cm</option>
+						<option>40 cm bis Halbarm / halbes Bein</option>
+						<option>Ganzarm-Sleeve / Halbarm</option>
+						<option>Fullback / Ganzkörper</option>
+						<option>Noch unklar</option>
+					</select>
+				</div>
+				<div class="field">
+					<label>Körperstelle <span class="req">*</span></label>
+					<div class="bm" data-target="#d-koerperstelle">
+						<div class="bodymap">
+							<div class="bodymap__view" data-view="front"><h5>Vorne</h5></div>
+							<div class="bodymap__view" data-view="back"><h5>Hinten</h5></div>
+						</div>
+						<div class="bm-chips" aria-live="polite"></div>
+						<p class="bm-hint">Klick auf der Figur, wo das Tattoo sitzen soll – Vorder- und Rückansicht. Mehrfachauswahl möglich.</p>
+					</div>
+					<input type="hidden" id="d-koerperstelle" name="ia_koerperstelle" required>
+				</div>
+				<fieldset class="fieldset full">
+					<legend>Stil (Mehrfachauswahl) <span class="req">*</span></legend>
+					<div class="chips">
+						<label><input type="checkbox" name="ia_stil[]" value="Realistisch"> <span>Realistisch</span></label>
+						<label><input type="checkbox" name="ia_stil[]" value="Black & Grey"> <span>Black &amp; Grey</span></label>
+						<label><input type="checkbox" name="ia_stil[]" value="Portrait"> <span>Portrait</span></label>
+						<label><input type="checkbox" name="ia_stil[]" value="Tier / Animal"> <span>Tier / Animal</span></label>
+						<label><input type="checkbox" name="ia_stil[]" value="Cover-Up"> <span>Cover-Up</span></label>
+						<label><input type="checkbox" name="ia_stil[]" value="Lettering"> <span>Lettering</span></label>
+						<label><input type="checkbox" name="ia_stil[]" value="Etwas anderes"> <span>Etwas anderes</span></label>
+					</div>
+				</fieldset>
+				<div class="field full">
+					<label for="d-projekt">Beschreib dein Projekt <span class="req">*</span></label>
+					<textarea id="d-projekt" name="ia_projekt" required placeholder="Motiv-Idee, Hintergrund, Wunschmotive, ob vorhanden: Skizze oder Referenz …"></textarea>
+				</div>
+				<div class="field full">
+					<label>Beispiel- / Referenzfotos <span class="hint">(max. 6 Dateien, je 8 MB, JPG/PNG/WebP)</span></label>
+					<div class="upload-zone" tabindex="0" role="button" aria-label="Dateien auswählen oder hierher ziehen">
+						📷 Dateien auswählen oder hierher ziehen · <span class="upload-count">0/6</span>
+						<input type="file" name="ia_files[]" accept=".jpg,.jpeg,.png,.webp" multiple>
+					</div>
+					<ul class="upload-list"></ul>
+				</div>
+				<div class="full consent field">
+					<label style="display:flex;gap:12px;align-items:flex-start;text-transform:none;letter-spacing:0;font-size:.88rem">
+						<input type="checkbox" name="ia_consent" value="1" required>
+						<span style="color:var(--muted)">Ich bin damit einverstanden, dass meine Angaben und die hochgeladenen Fotos zur Bearbeitung der Anfrage gespeichert und per E-Mail an Igor Metz übermittelt werden. <span class="req">*</span></span>
+					</label>
+				</div>
+				<div class="full">
+					<button type="submit" class="btn">Anfrage senden</button>
+					<p class="form-note">Mit * gekennzeichnete Felder sind Pflichtfelder. Anfragen werden in der Regel innerhalb von 48 Stunden beantwortet.</p>
+				</div>
+			</div>
+		</form>
+
+		<div class="socials" style="margin-top:44px;justify-content:flex-start">
+			<a href="https://www.instagram.com/igormetztattoo/" target="_blank" rel="noopener me">Instagram @igormetztattoo</a>
+			<a href="https://www.facebook.com/igormetztattoo/" target="_blank" rel="noopener me">Facebook</a>
+			<a href="https://www.tiktok.com/@igormetztattoo" target="_blank" rel="noopener me">TikTok</a>
+		</div>
+	</div>
+</section>
+
+</main>
+<footer class="site-footer" id="kontakt">
+	<div class="wrap">
+		<div class="site-footer__grid">
+			<div>
+				<h4>Igor Metz · Tattoo München</h4>
+				<p>Realistic Black &amp; Grey Tattoo · München · Deutschland</p>
+				<div class="socials" style="margin-top:18px">
+					<a href="https://www.instagram.com/igormetztattoo/" target="_blank" rel="noopener me">Instagram</a>
+					<a href="https://www.facebook.com/igormetztattoo/" target="_blank" rel="noopener me">Facebook</a>
+					<a href="https://www.tiktok.com/@igormetztattoo" target="_blank" rel="noopener me">TikTok</a>
+				</div>
+			</div>
+			<div>
+				<h4>Navigation</h4>
+				<ul>
+					<li><a href="index.html">Start</a></li>
+					<li><a href="portfolio.html">Portfolio</a></li>
+					<li><a href="anfrage.html">Anfrage</a></li>
+				</ul>
+			</div>
+			<div>
+				<h4>Kontakt</h4>
+				<ul>
+					<li>München, Deutschland</li>
+					<li><a href="anfrage.html">Tattoo anfragen</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="site-footer__bottom">
+			<span>© 2026 Igor Metz Tattoo</span>
+			<span><a href="#">Impressum</a> · <a href="#">Datenschutz</a></span>
+		</div>
+	</div>
+</footer>
+<script src="assets/bodymap.js"></script>
+<script>window.IGOR_ANFRAGE={maxFiles:6,maxMb:8};</script>
+<script src="assets/anfrage.js"></script>
+<script src="assets/js/portfolio.js"></script>
+</body>
+</html>
