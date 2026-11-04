@@ -11,6 +11,8 @@
   'use strict';
 
   var NS = 'http://www.w3.org/2000/svg';
+  var VERSION = '1.3.2';
+  window.IGOR_BODYMAP_VERSION = VERSION;
 
   // ------------------------------------------------------------------
   // Zonen: SVG-Element-Id -> Chip-Bezeichnung.
@@ -159,7 +161,12 @@
 
     root.addEventListener('click', function (e) {
       var r = e.target.closest ? e.target.closest('.bm-region') : null;
-      if (r && root.contains(r)) toggle(r.getAttribute('data-label'));
+      if (r && root.contains(r)) {
+        var lab = r.getAttribute('data-label');
+        // Safari-Defensive: Touch-Hervorhebung darf nie haften bleiben
+        setHov(lab, false);
+        toggle(lab);
+      }
     });
     root.addEventListener('keydown', function (e) {
       var r = e.target.closest ? e.target.closest('.bm-region') : null;
@@ -186,6 +193,15 @@
 
     root._bmSync = sync;
     root._bmSet = function (labels) { selected = (labels || '').split(',').map(function (s) { return s.trim(); }).filter(Boolean); sync(); };
+    // winzige Versionsmarkierung an der Hinweiszeile (Prüfung auf dem Handy)
+    var hint = root.querySelector('.bm-hint');
+    if (hint && !hint.querySelector('.bm-ver')) {
+      var ver = document.createElement('small');
+      ver.className = 'bm-ver';
+      ver.style.cssText = 'display:block;opacity:.55;margin-top:4px';
+      ver.textContent = 'Bodymap v' + VERSION;
+      hint.appendChild(ver);
+    }
     sync();
   }
 
