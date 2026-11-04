@@ -168,13 +168,17 @@
         toggle(r.getAttribute('data-label'));
       }
     });
-    // Hover hebt alle Teilformen derselben Zone gemeinsam hervor
-    root.addEventListener('mouseover', function (e) {
+    // Hover hebt alle Teilformen derselben Zone gemeinsam hervor – aber nur
+    // bei echter Maus: Ein Touch-Tap feuert ein synthetisches mouseover ohne
+    // zugehöriges mouseout, das Weiß bliebe sonst nach dem Abwählen haften.
+    root.addEventListener('pointerover', function (e) {
+      if (e.pointerType && e.pointerType !== 'mouse') return;
       if (e.target.classList && e.target.classList.contains('bm-region')) {
         setHov(e.target.getAttribute('data-label'), true);
       }
     });
-    root.addEventListener('mouseout', function (e) {
+    root.addEventListener('pointerout', function (e) {
+      if (e.pointerType && e.pointerType !== 'mouse') return;
       if (e.target.classList && e.target.classList.contains('bm-region')) {
         setHov(e.target.getAttribute('data-label'), false);
       }
