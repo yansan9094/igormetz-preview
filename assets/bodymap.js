@@ -36,7 +36,9 @@
     if (PART_RE.test(m[1])) {
       part = /_Außen/.test(base) ? ' außen' : (/_Innen/.test(base) ? ' innen' : '');
     }
-    return name + side + part;
+    // Igors Datei trennt Oberschenkel vorne (Vorderansicht) / hinten (Rückansicht)
+    var face = /_Vorne/.test(base) ? ' vorne' : (/_Hinten/.test(base) ? ' hinten' : '');
+    return name + side + part + face;
   }
 
   // Beschriftungen unter den Figuren (Koordinaten aus dem SVG-Viewport)

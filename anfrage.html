@@ -52,6 +52,8 @@
 
 		<form class="tatoo-anfrage" style="margin-top:30px" data-demo novalidate>
 			<div class="form-grid">
+				<div class="full fc-cols">
+				<div class="fc-fields">
 				<div class="field">
 					<label for="d-name">Name <span class="req">*</span></label>
 					<input type="text" id="d-name" name="ia_name" required autocomplete="name">
@@ -81,6 +83,8 @@
 						<option>Noch unklar</option>
 					</select>
 				</div>
+				</div><!-- /.fc-fields -->
+				<div class="fc-map">
 				<div class="field">
 					<label>Körperstelle <span class="req">*</span></label>
 					<div class="bm" data-target="#d-koerperstelle">
@@ -92,6 +96,8 @@
 					</div>
 					<input type="hidden" id="d-koerperstelle" name="ia_koerperstelle" required>
 				</div>
+				</div><!-- /.fc-map -->
+				</div><!-- /.fc-cols -->
 				<fieldset class="fieldset full">
 					<legend>Stil (Mehrfachauswahl) <span class="req">*</span></legend>
 					<div class="chips">
