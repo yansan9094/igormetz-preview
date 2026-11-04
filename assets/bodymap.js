@@ -14,13 +14,16 @@
 
   // ------------------------------------------------------------------
   // Zonen: SVG-Element-Id -> Chip-Bezeichnung.
-  // Elemente mit gleicher Bezeichnung werden gemeinsam ausgewaehlt
-  // (z. B. Oberarm Außen + Innen, gleiche Zone in Vorder-/Rückansicht).
+  // Igors Einteilung bleibt unverändert: Außen/Innen sind eigene Zonen
+  // (Oberarm/Unterarm außen | innen getrennt wählbar). Gleiche Zone in
+  // Vorder- und Rückansicht teilt sich dieselbe Bezeichnung und wird
+  // gemeinsam ausgewählt.
   // Igors Namensgebung ist anatomisch korrekt (links/rechts auf den
   // Patienten bezogen, in beiden Ansichten).
   // ------------------------------------------------------------------
   var NAME_RE = /^(Hals|Nacken|Rippen|Brust|Schulter|Oberarm|Unterarm|Schienbein|Oberschenkel|Kniekehle|Knie|Hüfte|Pobacke|Wade|Fuß|Hand|Bauch)/;
   var NAME_MAP = { Pobacke: 'Gesäß' };
+  var PART_RE = /^(Oberarm|Unterarm)$/;
 
   function labelFor(id) {
     if (id === 'Rücken_Unten') return 'Unterer Rücken';
@@ -29,15 +32,12 @@
     if (!m) return null;
     var name = NAME_MAP[m[1]] || m[1];
     var side = /_Rechts/.test(base) ? ' rechts' : (/_Links/.test(base) ? ' links' : '');
-    return name + side;
+    var part = '';
+    if (PART_RE.test(m[1])) {
+      part = /_Außen/.test(base) ? ' außen' : (/_Innen/.test(base) ? ' innen' : '');
+    }
+    return name + side + part;
   }
-
-  // Kopf fehlt in Igors Grafik als eigene Zone (nur Kontur) – unsichtbare
-  // Trefferflächen über beiden Köpfen ergänzen.
-  var KOPF_ELLIPSES = [
-    { cx: 216.2, cy: 105, rx: 52.5, ry: 59 },  // Vorderansicht
-    { cx: 566.5, cy: 105, rx: 53, ry: 59 }     // Rückansicht
-  ];
 
   // Beschriftungen unter den Figuren (Koordinaten aus dem SVG-Viewport)
   var VIEW_CAPTIONS = [
@@ -68,21 +68,6 @@
     return t;
   }
 
-  function makeRegion(label, attrs) {
-    var p = document.createElementNS(NS, 'ellipse');
-    for (var k in attrs) p.setAttribute(k, attrs[k]);
-    p.setAttribute('class', 'bm-region');
-    p.setAttribute('data-label', label);
-    p.setAttribute('tabindex', '0');
-    p.setAttribute('role', 'checkbox');
-    p.setAttribute('aria-checked', 'false');
-    p.setAttribute('aria-label', label);
-    var t = document.createElementNS(NS, 'title');
-    t.textContent = label;
-    p.appendChild(t);
-    return p;
-  }
-
   function buildSVG() {
     var svg = svgFromEmbed();
     svg.removeAttribute('width');
@@ -111,9 +96,6 @@
       if (!el.id) el.setAttribute('class', 'bm-base');
     });
 
-    KOPF_ELLIPSES.forEach(function (k) {
-      svg.appendChild(makeRegion('Kopf', k));
-    });
     VIEW_CAPTIONS.forEach(function (c) {
       svg.appendChild(makeText(c.x, 1010, c.text, 'bm-viewlabel'));
     });

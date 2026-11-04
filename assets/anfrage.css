@@ -110,7 +110,10 @@ fieldset.fieldset legend {
    Hover: weiß 40 % | Auswahl: #DAA336 80 %  (Igors Vorgabe) */
 .bm-region { fill: transparent; cursor: pointer; pointer-events: all; transition: fill .12s ease; }
 .bm-region.hov { fill: rgba(255, 255, 255, .4); }
-.bm-region:focus { outline: none; fill: rgba(255, 255, 255, .4); }
+/* Nur echte Tastatur-Fokussierung hervorheben: ein Maus-Klick setzt :focus,
+   das sonst als weißer Rest nach dem Abwählen hängen bliebe. */
+.bm-region:focus { outline: none; }
+.bm-region:focus-visible { fill: rgba(255, 255, 255, .4); }
 .bm-region.sel { fill: rgba(218, 163, 54, .8); }
 .bm-region.sel.hov { fill: rgba(218, 163, 54, .55); }
 .bm-chips { display: flex; flex-wrap: wrap; gap: 8px; min-height: 34px; }
