@@ -94,26 +94,25 @@ fieldset.fieldset legend {
 .alert--err { background: rgba(217, 112, 112, .08); border: 1px solid rgba(217, 112, 112, .4); color: var(--err); }
 
 /* ---------- Körperstellen-Map ---------- */
-.bodymap {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 18px; margin-bottom: 16px;
-}
+.bodymap { display: grid; gap: 18px; margin-bottom: 16px; }
 .bodymap__view {
   background: var(--bg); border: 1px solid var(--line); border-radius: 10px;
   padding: 12px; position: relative;
 }
-.bodymap__view h5 {
-  margin: 2px 0 6px; text-align: center;
-  font-family: 'Oswald', Arial, sans-serif; font-weight: 500;
-  text-transform: uppercase; letter-spacing: .22em; font-size: .72rem;
-  color: var(--faint);
-}
-.bodymap svg { width: 100%; height: auto; max-height: 430px; display: block; margin: 0 auto; }
-.bm-base path { fill: #1c1c21; stroke: #1c1c21; stroke-width: 8; stroke-linejoin: round; pointer-events: none; }
+.bm-svg { width: 100%; height: auto; display: block; margin: 0 auto; max-width: 620px; }
+.bm-base { pointer-events: none; }
 .bm-label { font-size: 12px; fill: #77777f; letter-spacing: .1em; pointer-events: none; font-weight: 600; }
-.bm-region { fill: #232329; stroke: #34343c; stroke-width: 1; cursor: pointer; transition: fill .12s, stroke .12s; }
-.bm-region:hover { fill: #34343c; stroke: var(--accent); }
-.bm-region.sel { fill: var(--accent); stroke: #e0bd7a; }
+.bm-viewlabel {
+  font-size: 27px; fill: #6d6d74; letter-spacing: .14em; pointer-events: none;
+  font-family: 'Oswald', Arial, sans-serif; text-transform: uppercase;
+}
+/* Zonen: Igors Grafik bleibt sichtbar (Kontur #94e2ff), Einfaerbung zeigt den Zustand.
+   Hover: weiß 40 % | Auswahl: #DAA336 80 %  (Igors Vorgabe) */
+.bm-region { fill: transparent; cursor: pointer; pointer-events: all; transition: fill .12s ease; }
+.bm-region.hov { fill: rgba(255, 255, 255, .4); }
+.bm-region:focus { outline: none; fill: rgba(255, 255, 255, .4); }
+.bm-region.sel { fill: rgba(218, 163, 54, .8); }
+.bm-region.sel.hov { fill: rgba(218, 163, 54, .55); }
 .bm-chips { display: flex; flex-wrap: wrap; gap: 8px; min-height: 34px; }
 .bm-chip {
   display: inline-flex; align-items: center; gap: 8px;

@@ -85,8 +85,7 @@
 					<label>Körperstelle <span class="req">*</span></label>
 					<div class="bm" data-target="#d-koerperstelle">
 						<div class="bodymap">
-							<div class="bodymap__view" data-view="front"><h5>Vorne</h5></div>
-							<div class="bodymap__view" data-view="back"><h5>Hinten</h5></div>
+							<div class="bodymap__view" data-bm-canvas></div>
 						</div>
 						<div class="bm-chips" aria-live="polite"></div>
 						<p class="bm-hint">Klick auf der Figur, wo das Tattoo sitzen soll – Vorder- und Rückansicht. Mehrfachauswahl möglich.</p>
@@ -173,6 +172,7 @@
 		</div>
 	</div>
 </footer>
+<script src="assets/body-svg.js"></script>
 <script src="assets/bodymap.js"></script>
 <script>window.IGOR_ANFRAGE={maxFiles:6,maxMb:8};</script>
 <script src="assets/anfrage.js"></script>
